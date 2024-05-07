@@ -45,8 +45,7 @@ def main():
             n1.append(int(l))
     str1 = generateStr(str1, n1)
     str2 = generateStr(str2, n2)
-    # print(str1)
-    # print(str2)
+    
     time, score, a1, a2 = time_wrapper(str1, str2)
     memory = process_memory()
     file_output(output, score, a1, a2, time, memory)
@@ -108,6 +107,7 @@ def time_wrapper(s1, s2):
     time_taken = (end_time - start_time)*1000 
     return time_taken, score, a1, a2
 
+
 #solution function
 def basic_dp(s1, s2, match_score=0, gap_score=30):
 
@@ -150,7 +150,7 @@ def basic_dp(s1, s2, match_score=0, gap_score=30):
             scores[s1_index][1] = gap_score*len(s1_part)
             aligned[s1_index][1] = (s1_part, "".join(["_" for i in range(len(s1_part))]))
     
-   
+    
     for i in range(2, nrows):
         for j in range(2, ncols):
             
@@ -180,7 +180,7 @@ def basic_dp(s1, s2, match_score=0, gap_score=30):
                 aligned[i][j] = (s1_aligned_opt2,s2_aligned_opt2)
             else:
                 aligned[i][j] = (s1_aligned_opt3,s2_aligned_opt3) 
-            
+
     final_score = scores[nrows-1][ncols-1]
     aligned_s1 = aligned[nrows-1][ncols-1][0]
     aligned_s2 = aligned[nrows-1][ncols-1][1]

@@ -108,10 +108,7 @@ def time_wrapper(s1, s2):
     time_taken = (end_time - start_time)*1000 
     return time_taken, score, a1, a2
 
-def showTable(t):
-    for i in range(len(t)):
-        print(t[i])
-    return 0 
+
 #solution function
 
 def efficient_dp(s1, s2):
@@ -127,10 +124,6 @@ def efficient_dp(s1, s2):
     bestp = -1
 
     for i in range(len(s2)+1):
-        # if i == len(s2):
-        #     total = scorel[-1]+scorer[0]
-        # if i == 0:
-        #     total = scorel[0]+scorer[-1]
         total = scorel[i]+scorer[len(s2)-i]
         
         if total < minscore:
@@ -172,10 +165,8 @@ def breakPoint(s1, s2, match=0, gap=30):
             score_opt3 = opt3 + gap
 
             temp[j] = min(score_opt1, score_opt2, score_opt3)
-            #print("temp after: ", temp)
-        #print("score after: ", temp)
         scores[1] = temp
-    #showTable(scores)
+
     return scores[1]
 
 def basic_dp(s1, s2, match_score=0, gap_score=30):
